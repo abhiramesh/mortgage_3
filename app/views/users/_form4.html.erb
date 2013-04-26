@@ -1,0 +1,31 @@
+<%= form_for @user, remote: true, :method => :put, :html => {:id => "form4"} do |f| %>
+	<%= f.label :email %>
+	<%= f.text_field :email, placeholder: "Email", :style => "width:120px;" %>
+	<div class="message" id="email_error"></div>
+	<%= f.submit 'Next', :class => 'submit', :id => "submit4" %>
+	<div class="back-link" id="back-link-3">Back</div>
+<% end %>
+
+<script type="text/javascript">
+	$('input#user_email').blur(function(event){
+		var email_format = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+		if (!email_format.test($('input#user_email').val())) {
+			event.preventDefault();
+			$('#email_error').empty().append("Please enter a valid email");
+		}
+		if (email_format.test($('input#user_email').val())) {
+			$('#email_error').empty();
+		}
+	});
+	$('#submit4').click(function(event){
+		var email_format = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+		if (!email_format.test($('input#user_email').val())) {
+			event.preventDefault();
+			$('#email_error').empty().append("Please enter a valid email");
+		}
+	});
+	$('#back-link-3').click(function(){
+		$('#form4').hide();
+		$('#form3').show().insertAfter('div.progress');
+	});
+</script>

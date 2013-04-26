@@ -1,4 +1,15 @@
 Mortgage3::Application.routes.draw do
+  
+  devise_for :users, :controllers => { :registrations => "registration" } do
+      get '/logout' => 'devise/sessions#destroy', :as => "destroy_user_session"
+  end
+
+  resources :users
+
+  root to: 'static_pages#home'
+
+  get '/thanks', to: 'static_pages#thanks'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
