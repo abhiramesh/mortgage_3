@@ -12,5 +12,16 @@ class ApplicationController < ActionController::Base
 		root_path
 	end
   end
+
+  def authorize
+  	if current_user
+	  	unless current_user.email == "vpujji@gmail.com"
+	  		redirect_to root_path
+	  	end
+	else 
+		redirect_to root_path
+	end
+  end
+
   
 end
