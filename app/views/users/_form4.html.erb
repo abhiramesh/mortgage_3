@@ -1,4 +1,5 @@
 <%= form_for @user, remote: true, :method => :put, :html => {:id => "form4"} do |f| %>
+<div style="text-decoration: underline;padding-bottom: 5px;"> Where should we send your quote? </div>
 	<%= f.label :email %>
 	<%= f.text_field :email, placeholder: "Email", :style => "width:120px;" %>
 	<div class="message" id="email_error"></div>
